@@ -1,12 +1,17 @@
 using System;
+using System.Collections.Generic;
 
-namespace WebApplication2.Entities;
+namespace EduPay.Entities;
 
 public class Matricula
 {
     public int Id { get; set; }
-    public DateTime Data { get; set; }
-    public Curso Curso { get; set; }
+    public int AlunoId { get; set; }
     public Aluno Aluno { get; set; }
-    public bool Ativo { get; set; }
+
+    public int CursoId { get; set; }
+    public Curso Curso { get; set; }
+
+    public DateTime DataMatricula { get; set; } = DateTime.UtcNow;
+    public List<Pagamento> Pagamentos { get; set; } = new();
 }

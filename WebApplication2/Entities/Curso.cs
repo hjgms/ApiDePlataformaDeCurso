@@ -1,11 +1,11 @@
-namespace WebApplication2.Entities;
+namespace EduPay.Entities;
 
-public class Curso
+public abstract class Curso
 {
     public int Id { get; set; }
-    public string Nome { get; set; }
+    public string Titulo { get; set; }
     public string Descricao { get; set; }
-    public int Duracao { get; set; }
-    public double Valor { get; set; }
-
+    public decimal Preco { get; set; }
+    public int DuracaoHoras { get; set; }
+    
 }

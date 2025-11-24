@@ -1,15 +1,25 @@
 using Microsoft.EntityFrameworkCore;
-using WebApplication2.Entities;
+using EduPay.Entities;
 
-namespace WebApplication2.Data;
-
-public class DataContext : DbContext
+namespace EduPay.Data
 {
-    public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+    public class DataContext : DbContext
+    {
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-    public DbSet<Aluno>  Alunos { get; set; }
-    public DbSet<Curso> Cursos { get; set; }
-    public DbSet<Matricula> Matriculas { get; set; }
-    public DbSet<Pagamento> Pagamentos { get; set; }
+        public DbSet<Aluno> Alunos => Set<Aluno>();
+        public DbSet<Curso> Cursos => Set<Curso>();
+        public DbSet<CursoOnline> CursosOnline => Set<CursoOnline>();
+        public DbSet<CursoPresencial> CursosPresencial => Set<CursoPresencial>();
+        public DbSet<Matricula> Matriculas => Set<Matricula>();
+        public DbSet<Pagamento> Pagamentos => Set<Pagamento>();
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Curso>()
+                .HasDiscriminator<string>("CursoTipo")
+                .HasValue<CursoPresencial>("Presencial")
+                .HasValue<CursoOnline>("Online");
+        }
+    }
 }

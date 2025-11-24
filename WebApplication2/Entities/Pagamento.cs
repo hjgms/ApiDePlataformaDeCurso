@@ -1,10 +1,14 @@
-namespace WebApplication2.Entities;
+namespace EduPay.Entities;
 using System;
 
 public class Pagamento
 {
     public int Id { get; set; }
-    public DateTime Data { get; set; }
+    public int MatriculaId { get; set; }
     public Matricula Matricula { get; set; }
-    public DateTime Vencimento { get; set; }
+
+    public DateTime DataPagamento { get; set; }
+    public decimal Valor { get; set; }
+    public string MetodoPagamento { get; set; }
+    public string Status { get; set; }
 }

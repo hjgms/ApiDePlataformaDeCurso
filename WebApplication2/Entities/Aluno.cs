@@ -1,4 +1,6 @@
-namespace WebApplication2.Entities;
+using System.Collections.Generic;
+
+namespace EduPay.Entities;
 
 public class Aluno
 {
@@ -9,4 +11,8 @@ public class Aluno
     public string DataNascimento { get; set; }
     public string Endereco { get; set; }
     public string Cpf { get; set; }
+    
+    
+    public List<Matricula> Matriculas { get; set; } = new();
+    
 }
